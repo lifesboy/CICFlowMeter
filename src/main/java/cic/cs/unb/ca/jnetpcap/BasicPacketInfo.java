@@ -25,9 +25,9 @@ public class BasicPacketInfo {
 	private    boolean flagACK = false;
 	private    boolean flagCWR = false;
 	private    boolean flagRST = false;
-	private	   int TCPWindow=-1;
+	private	   int TCPWindow=0;
 	private	   long headerBytes;
-	public int payloadPacket=0;
+	private int payloadPacket=0;
 
 	public BasicPacketInfo(byte[] src, byte[] dst, int srcPort, int dstPort,
 			int protocol, long timeStamp, IdGenerator generator) {
@@ -67,10 +67,25 @@ public class BasicPacketInfo {
             this.flowId = this.getDestinationIP() + "-" + this.getSourceIP() + "-" + this.dstPort  + "-" + this.srcPort  + "-" + this.protocol;
         }
         return this.flowId;
-    }
+	}
+
+ 	public String fwdFlowId() {  
+		this.flowId = this.getSourceIP() + "-" + this.getDestinationIP() + "-" + this.srcPort  + "-" + this.dstPort  + "-" + this.protocol;
+		return this.flowId;
+	}
+	
+	public String bwdFlowId() {  
+		this.flowId = this.getDestinationIP() + "-" + this.getSourceIP() + "-" + this.dstPort  + "-" + this.srcPort  + "-" + this.protocol;
+		return this.flowId;
+	}
+
+
     
 	public String dumpInfo() {
 		return null;
+	}
+	public int getPayloadPacket() {
+		return payloadPacket+=1;
 	}
           
     
@@ -92,7 +107,7 @@ public class BasicPacketInfo {
 	}
 
 	public byte[] getSrc() {
-		return src;
+		return Arrays.copyOf(src,src.length);
 	}
 
 	public void setSrc(byte[] src) {
@@ -100,7 +115,7 @@ public class BasicPacketInfo {
 	}
 
 	public byte[] getDst() {
-		return dst;
+		return Arrays.copyOf(dst,dst.length);
 	}
 
 	public void setDst(byte[] dst) {

@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.jnetpcap.PcapIf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import swing.common.InsertCsvRow;
+import cic.cs.unb.ca.jnetpcap.worker.InsertCsvRow;
 import swing.common.InsertTableRow;
 import swing.common.JTable2CSVWorker;
 import swing.common.TextFileFilter;
@@ -50,9 +50,9 @@ public class FlowMonitorPane extends JPanel {
     private JToggleButton btnStop;
     private ButtonGroup btnGroup;
 
-    private JButton btnSave;
+    private JButton btnSave = new JButton();
     private File lastSave;
-    private JButton btnGraph;
+    private JButton btnGraph = new JButton();
     private JFileChooser fileChooser;
 
     private ExecutorService csvWriterThread;
@@ -69,6 +69,10 @@ public class FlowMonitorPane extends JPanel {
 
     private void init() {
         csvWriterThread = Executors.newSingleThreadExecutor();
+    }
+
+    public void destory() {
+        csvWriterThread.shutdown();
     }
 
     private JPanel initCenterPane(){
@@ -90,7 +94,7 @@ public class FlowMonitorPane extends JPanel {
         pane.setLayout(new BorderLayout(0, 5));
         pane.setBorder(BorderFactory.createLineBorder(new Color(0x555555)));
 
-        initTableBtnPane();//pane.add(initTableBtnPane(), BorderLayout.NORTH);
+        //pane.add(initTableBtnPane(), BorderLayout.NORTH);
         pane.add(initTablePane(), BorderLayout.CENTER);
         pane.add(initStatusPane(), BorderLayout.SOUTH);
 
@@ -282,7 +286,7 @@ public class FlowMonitorPane extends JPanel {
                             lblStatus.validate();
 
                         } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
+                            logger.debug(e.getMessage());
                         }
                         break;
                 }
@@ -323,7 +327,7 @@ public class FlowMonitorPane extends JPanel {
                             logger.info("Pcap stop listening");
 
                         }catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
+                            logger.debug(e.getMessage());
                         }
                         break;
                 }
