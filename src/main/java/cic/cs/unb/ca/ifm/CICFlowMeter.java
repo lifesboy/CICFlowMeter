@@ -74,13 +74,16 @@ public class CICFlowMeter {
 
 
 		// Check an output CSV directory
-		if (!(new File(outpath)).isDirectory()) {
-			logger.info("Sorry, the output directory can be found under: {}", outpath);
-			return;
-		} else {
-			if (!outpath.endsWith("/"))
-			 	outpath += "/";
+		File outFile = new File(outpath);
+		if (!outFile.isDirectory()) {
+			if (pcapfiles.length > 1) {
+				logger.info("Sorry, the output directory can be found under: {}", outpath);
+				return;
+			}
+			outpath = outFile.getParent();
 		}
+		if (!outpath.endsWith("/"))
+			outpath += "/";
 
 
 		logger.info("");
@@ -121,7 +124,7 @@ public class CICFlowMeter {
 			logger.info("PCAP duration {} seconds",((packetReader.getLastPacket()-packetReader.getFirstPacket())/1000));
 			logger.info("----------------------------------------------------------------------------");
 
-			String fname = (new File(file)).getName();
+			String fname = outFile.isDirectory() ? (new File(file)).getName() : outFile.getName();
 			int pos = fname.lastIndexOf(".");
 			// logger.info(outpath + "," + fname.substring(0,pos)+"_ISCX.csv");
 			totalFlows += flowGen.dumpLabeledFlowBasedFeatures(
