@@ -10,91 +10,91 @@ import java.util.List;
 
 public enum FlowFeature {
 
-    fid("Flow ID","FID",false),					//1 this index is for feature not for ordinal
-    src_ip("Src IP","SIP",false),				//2
-    src_port("Src Port","SPT"),					//3
-    dst_ip("Dst IP","DIP",false),				//4
-    dst_pot("Dst Port","DPT"),					//5
-    prot("Protocol","PROT"),					//6
-    tstp("Timestamp","TSTP",false),				//7
-    fl_dur("Flow Duration","DUR"),				//8
-    tot_fw_pkt("Total Fwd Packet","TFwP"),			//9
-    tot_bw_pkt("Total Bwd packets","TBwP"),			//10
-    tot_l_fw_pkt("Total Length of Fwd Packet","TLFwP"),		//11
-    tot_l_bw_pkt("Total Length of Bwd Packet","TLBwP"),		//12
-    fw_pkt_l_max("Fwd Packet Length Max","FwPLMA"),		//13
-    fw_pkt_l_min("Fwd Packet Length Min","FwPLMI"),		//14
-    fw_pkt_l_avg("Fwd Packet Length Mean","FwPLAG"),		//15
-    fw_pkt_l_std("Fwd Packet Length Std","FwPLSD"),		//16
-    bw_pkt_l_max("Bwd Packet Length Max","BwPLMA"),		//17
-    bw_pkt_l_min("Bwd Packet Length Min","BwPLMI"),		//18
-    bw_pkt_l_avg("Bwd Packet Length Mean","BwPLAG"),		//19
-    bw_pkt_l_std("Bwd Packet Length Std","BwPLSD"),		//20
-    fl_byt_s("Flow Bytes/s","FB/s"),				//21
-    fl_pkt_s("Flow Packets/s","FP/s"),				//22
-    fl_iat_avg("Flow IAT Mean","FLIATAG"),			//23
-    fl_iat_std("Flow IAT Std","FLIATSD"),			//24
-    fl_iat_max("Flow IAT Max","FLIATMA"),			//25
-    fl_iat_min("Flow IAT Min","FLIATMI"),			//26
-    fw_iat_tot("Fwd IAT Total","FwIATTO"),			//27
-    fw_iat_avg("Fwd IAT Mean","FwIATAG"),			//28
-    fw_iat_std("Fwd IAT Std","FwIATSD"),			//29
-    fw_iat_max("Fwd IAT Max","FwIATMA"),			//30
-    fw_iat_min("Fwd IAT Min","FwIATMI"),			//31
-    bw_iat_tot("Bwd IAT Total","BwIATTO"),			//32
-    bw_iat_avg("Bwd IAT Mean","BwIATAG"),			//33
-    bw_iat_std("Bwd IAT Std","BwIATSD"),			//34
-    bw_iat_max("Bwd IAT Max","BwIATMA"),			//35
-    bw_iat_min("Bwd IAT Min","BwIATMI"),			//36
-    fw_psh_flag("Fwd PSH Flags","FwPSH"),			//37
-    bw_psh_flag("Bwd PSH Flags","BwPSH"),			//38
-    fw_urg_flag("Fwd URG Flags","FwURG"),			//39
-    bw_urg_flag("Bwd URG Flags","BwURG"),			//40
-    fw_hdr_len("Fwd Header Length","FwHL"),			//41
-    bw_hdr_len("Bwd Header Length","BwHL"),			//42
-    fw_pkt_s("Fwd Packets/s","FwP/s"),				//43
-    bw_pkt_s("Bwd Packets/s","Bwp/s"),				//44
-    pkt_len_min("Packet Length Min","PLMI"),			//45
-    pkt_len_max("Packet Length Max","PLMA"),			//46
-    pkt_len_avg("Packet Length Mean","PLAG"),			//47
-    pkt_len_std("Packet Length Std","PLSD"),			//48
-    pkt_len_var("Packet Length Variance","PLVA"),		//49
-    fin_cnt("FIN Flag Count","FINCT"),				//50
-    syn_cnt("SYN Flag Count","SYNCT"),				//51
-    rst_cnt("RST Flag Count","RSTCT"),				//52
-    pst_cnt("PSH Flag Count","PSHCT"),				//53
-    ack_cnt("ACK Flag Count","ACKCT"),				//54
-    urg_cnt("URG Flag Count","URGCT"),				//55
-    CWR_cnt("CWR Flag Count","CWRCT"),				//56
-    ece_cnt("ECE Flag Count","ECECT"),				//57
-    down_up_ratio("Down/Up Ratio","D/URO"),			//58
-    pkt_size_avg("Average Packet Size","PSAG"),			//59
-    fw_seg_avg("Fwd Segment Size Avg","FwSgAG"),		//60
-    bw_seg_avg("Bwd Segment Size Avg","BwSgAG"),		//61
-    fw_byt_blk_avg("Fwd Bytes/Bulk Avg","FwB/BAG"),		//63   62 is duplicated with 41,so has been deleted
-    fw_pkt_blk_avg("Fwd Packet/Bulk Avg","FwP/BAG"),		//64
-    fw_blk_rate_avg("Fwd Bulk Rate Avg","FwBRAG"),		//65
-    bw_byt_blk_avg("Bwd Bytes/Bulk Avg","BwB/BAG"),		//66
-    bw_pkt_blk_avg("Bwd Packet/Bulk Avg","BwP/BAG"),		//67
-    bw_blk_rate_avg("Bwd Bulk Rate Avg","BwBRAG"),		//68
-    subfl_fw_pkt("Subflow Fwd Packets","SFFwP"),		//69
-    subfl_fw_byt("Subflow Fwd Bytes","SFFwB"),			//70
-    subfl_bw_pkt("Subflow Bwd Packets","SFBwP"),		//71
-    subfl_bw_byt("Subflow Bwd Bytes","SFBwB"),			//72
-    fw_win_byt("FWD Init Win Bytes","FwWB"),			//73
-    bw_win_byt("Bwd Init Win Bytes","BwWB"),			//74
-    Fw_act_pkt("Fwd Act Data Pkts","FwAP"),			//75
-    fw_seg_min("Fwd Seg Size Min","FwSgMI"),			//76
-    atv_avg("Active Mean","AcAG"),				//77
-    atv_std("Active Std","AcSD"),				//78
-    atv_max("Active Max","AcMA"),				//79
-    atv_min("Active Min","AcMI"),				//80
-    idl_avg("Idle Mean","IlAG"),				//81
-    idl_std("Idle Std","IlSD"),					//82
-    idl_max("Idle Max","IlMA"),					//83
-    idl_min("Idle Min","IlMI"),					//84
+    fid("flow_id","FID",false),					//1 this index is for feature not for ordinal
+    src_ip("src_ip","SIP",false),				//2
+    src_port("src_port","SPT"),					//3
+    dst_ip("dst_ip","DIP",false),				//4
+    dst_pot("dst_port","DPT"),					//5
+    prot("protocol","PROT"),					//6
+    tstp("timestamp","TSTP",false),				//7
+    fl_dur("flow_duration","DUR"),				//8
+    tot_fw_pkt("tot_fwd_pkts","TFwP"),			//9
+    tot_bw_pkt("tot_bwd_pkts","TBwP"),			//10
+    tot_l_fw_pkt("totlen_fwd_pkts","TLFwP"),		//11
+    tot_l_bw_pkt("totlen_bwd_pkts","TLBwP"),		//12
+    fw_pkt_l_max("fwd_pkt_len_max","FwPLMA"),		//13
+    fw_pkt_l_min("fwd_pkt_len_min","FwPLMI"),		//14
+    fw_pkt_l_avg("fwd_pkt_len_mean","FwPLAG"),		//15
+    fw_pkt_l_std("fwd_pkt_len_std","FwPLSD"),		//16
+    bw_pkt_l_max("bwd_pkt_len_max","BwPLMA"),		//17
+    bw_pkt_l_min("bwd_pkt_len_min","BwPLMI"),		//18
+    bw_pkt_l_avg("bwd_pkt_len_mean","BwPLAG"),		//19
+    bw_pkt_l_std("bwd_pkt_len_std","BwPLSD"),		//20
+    fl_byt_s("flow_byts_s","FB/s"),				//21
+    fl_pkt_s("flow_pkts_s","FP/s"),				//22
+    fl_iat_avg("flow_iat_mean","FLIATAG"),			//23
+    fl_iat_std("flow_iat_std","FLIATSD"),			//24
+    fl_iat_max("flow_iat_max","FLIATMA"),			//25
+    fl_iat_min("flow_iat_min","FLIATMI"),			//26
+    fw_iat_tot("fwd_iat_tot","FwIATTO"),			//27
+    fw_iat_avg("fwd_iat_mean","FwIATAG"),			//28
+    fw_iat_std("fwd_iat_std","FwIATSD"),			//29
+    fw_iat_max("fwd_iat_max","FwIATMA"),			//30
+    fw_iat_min("fwd_iat_min","FwIATMI"),			//31
+    bw_iat_tot("bwd_iat_tot","BwIATTO"),			//32
+    bw_iat_avg("bwd_iat_mean","BwIATAG"),			//33
+    bw_iat_std("bwd_iat_std","BwIATSD"),			//34
+    bw_iat_max("bwd_iat_max","BwIATMA"),			//35
+    bw_iat_min("bwd_iat_min","BwIATMI"),			//36
+    fw_psh_flag("fwd_psh_flags","FwPSH"),			//37
+    bw_psh_flag("bwd_psh_flags","BwPSH"),			//38
+    fw_urg_flag("fwd_urg_flags","FwURG"),			//39
+    bw_urg_flag("bwd_urg_flags","BwURG"),			//40
+    fw_hdr_len("fwd_header_len","FwHL"),			//41
+    bw_hdr_len("bwd_header_len","BwHL"),			//42
+    fw_pkt_s("fwd_pkts_s","FwP/s"),				//43
+    bw_pkt_s("bwd_pkts_s","Bwp/s"),				//44
+    pkt_len_min("pkt_len_min","PLMI"),			//45
+    pkt_len_max("pkt_len_max","PLMA"),			//46
+    pkt_len_avg("pkt_len_mean","PLAG"),			//47
+    pkt_len_std("pkt_len_std","PLSD"),			//48
+    pkt_len_var("pkt_len_var","PLVA"),		//49
+    fin_cnt("fin_flag_cnt","FINCT"),				//50
+    syn_cnt("syn_flag_cnt","SYNCT"),				//51
+    rst_cnt("rst_flag_cnt","RSTCT"),				//52
+    pst_cnt("psh_flag_cnt","PSHCT"),				//53
+    ack_cnt("ack_flag_cnt","ACKCT"),				//54
+    urg_cnt("urg_flag_cnt","URGCT"),				//55
+    CWR_cnt("cwe_flag_count","CWRCT"),				//56 /// cwr cwe
+    ece_cnt("ece_flag_cnt","ECECT"),				//57
+    down_up_ratio("down_up_ratio","D/URO"),			//58
+    pkt_size_avg("pkt_size_avg","PSAG"),			//59
+    fw_seg_avg("fwd_seg_size_avg","FwSgAG"),		//60
+    bw_seg_avg("bwd_seg_size_avg","BwSgAG"),		//61
+    fw_byt_blk_avg("fwd_byts_b_avg","FwB/BAG"),		//63   62 is duplicated with 41,so has been deleted
+    fw_pkt_blk_avg("fwd_pkts_b_avg","FwP/BAG"),		//64
+    fw_blk_rate_avg("fwd_blk_rate_avg","FwBRAG"),		//65
+    bw_byt_blk_avg("bwd_byts_b_avg","BwB/BAG"),		//66
+    bw_pkt_blk_avg("bwd_pkts_b_avg","BwP/BAG"),		//67
+    bw_blk_rate_avg("bwd_blk_rate_avg","BwBRAG"),		//68
+    subfl_fw_pkt("subflow_fwd_pkts","SFFwP"),		//69
+    subfl_fw_byt("subflow_fwd_byts","SFFwB"),			//70
+    subfl_bw_pkt("subflow_bwd_pkts","SFBwP"),		//71
+    subfl_bw_byt("subflow_bwd_byts","SFBwB"),			//72
+    fw_win_byt("init_fwd_win_byts","FwWB"),			//73
+    bw_win_byt("init_bwd_win_byts","BwWB"),			//74
+    Fw_act_pkt("fwd_act_data_pkts","FwAP"),			//75
+    fw_seg_min("fwd_seg_size_min","FwSgMI"),			//76
+    atv_avg("active_mean","AcAG"),				//77
+    atv_std("active_std","AcSD"),				//78
+    atv_max("active_max","AcMA"),				//79
+    atv_min("active_min","AcMI"),				//80
+    idl_avg("idle_mean","IlAG"),				//81
+    idl_std("idle_std","IlSD"),					//82
+    idl_max("idle_max","IlMA"),					//83
+    idl_min("idle_min","IlMI"),					//84
 	
-	Label("Label","LBL",new String[]{"NeedManualLabel"});	//85
+	Label("label","LBL",new String[]{""});	//85
 
 
 	protected static final Logger logger = LoggerFactory.getLogger(FlowFeature.class);
