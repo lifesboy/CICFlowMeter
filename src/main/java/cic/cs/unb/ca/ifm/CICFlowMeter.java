@@ -124,11 +124,9 @@ public class CICFlowMeter {
 			logger.info("PCAP duration {} seconds",((packetReader.getLastPacket()-packetReader.getFirstPacket())/1000));
 			logger.info("----------------------------------------------------------------------------");
 
-			String fname = outFile.isDirectory() ? (new File(file)).getName() : outFile.getName();
-			int pos = fname.lastIndexOf(".");
+			String fname = outFile.isDirectory() ? (new File(file)).getName() + ".csv" : outFile.getName();
 			// logger.info(outpath + "," + fname.substring(0,pos)+"_ISCX.csv");
-			totalFlows += flowGen.dumpLabeledFlowBasedFeatures(
-				outpath, fname.substring(0,pos)+"_ISCX.csv", FlowFeature.getHeader());
+			totalFlows += flowGen.dumpLabeledFlowBasedFeatures(outpath, fname, FlowFeature.getHeader());
 
 			//flowGen.dumpIPAddresses(outpath, file+"_IP-Addresses.csv");
 			//flowGen.dumpTimeBasedFeatures(outpath, file+".csv");
