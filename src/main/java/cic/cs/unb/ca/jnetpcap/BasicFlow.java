@@ -1063,7 +1063,7 @@ public class BasicFlow {
 		else{
 			return "BENIGN";
 		}*/
-        return "NeedManualLabel";
+        return "";
     }
 	
     public String dumpFlowBasedFeaturesEx() {
