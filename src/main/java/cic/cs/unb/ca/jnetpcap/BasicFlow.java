@@ -1076,7 +1076,7 @@ public class BasicFlow {
     	dump.append(getDstPort()).append(separator);          						//5
     	dump.append(getProtocol()).append(separator);         						//6 
     	
-    	String starttime = DateFormatter.convertMilliseconds2String(flowStartTime/1000L, "yyyy/MM/dd hh:mm:ss");
+    	String starttime = DateFormatter.convertMilliseconds2String(flowStartTime/1000L, "yyyy-MM-dd hh:mm:ss");
     	dump.append(starttime).append(separator);									//7
     	
     	long flowDuration = flowLastSeen - flowStartTime;

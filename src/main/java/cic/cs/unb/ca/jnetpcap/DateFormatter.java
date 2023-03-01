@@ -12,21 +12,21 @@ public class DateFormatter {
 	public static String parseDateFromLong(long time, String format){
 		try{
 			if (format == null){
-				format = "yyyy/MM/dd hh:mm:ss";
+				format = "yyyy-MM-dd hh:mm:ss";
 			}
 			SimpleDateFormat simpleFormatter = new SimpleDateFormat(format);
 			Date tempDate = new Date(time);
 			return simpleFormatter.format(tempDate);
 		}catch(Exception ex){
 			System.out.println(ex.toString());
-			return "yyyy/MM/dd hh:mm:ss";
+			return "yyyy-MM-dd hh:mm:ss";
 		}		
 	}
 
 	public static String convertMilliseconds2String(long time, String format) {
 
         if (format == null){
-            format = "yyyy/MM/dd hh:mm:ss";
+            format = "yyyy-MM-dd hh:mm:ss";
         }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
